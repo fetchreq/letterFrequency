@@ -12,8 +12,10 @@ import org.knowm.xchart.XYChart;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -39,13 +41,15 @@ public class LetterFrequency {
         String currentWord;
         Set<Character> alphabet = new HashSet();
         List<String> chars2= new ArrayList(); 
+        
         char[] chars = 
         {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u',
         'v','w','x','y','z'};
+        
         String[] chars3 =
         {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u",
         "v","w","x","y","z"};
-        double[]nums = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26};
+
         for( int i = 0; i < chars.length; i++){
             alphabet.add(chars[i]);
             chars2.add(chars3[i]);
@@ -69,14 +73,19 @@ public class LetterFrequency {
                 }
             }
         }
+        Iterator mapValues = letterFreqMap.values().iterator();
         System.out.println(letterFreqMap);
         List<Double> freqValues = new ArrayList();
-        for(int i= 0; i< chars.length; i++){
-            freqValues.add(letterFreqMap.get(chars[i]));
+        while(mapValues.hasNext()){
+            freqValues.add((Double) mapValues.next());
         }
+        displayGraph(chars2, freqValues);
+
+    }
+    
+    public static void displayGraph(List xAxis, List yAxis){
         CategoryChart chart = new CategoryChartBuilder().height(600).title("Letter Frequency").xAxisTitle("Letters").yAxisTitle("Times Seen").build();
-        chart.addSeries("Frequency", chars2, freqValues);
-        
+        chart.addSeries("Frequency", xAxis, yAxis);
         new SwingWrapper(chart).displayChart();
     }
     
