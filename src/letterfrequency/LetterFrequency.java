@@ -5,14 +5,18 @@
  */
 package letterfrequency;
 
-import org.knowm.xchart.QuickChart;
+/***********************
+For graphs 
+************************/
 import org.knowm.xchart.SwingWrapper;
-import org.knowm.xchart.XYChart;
+import org.knowm.xchart.CategoryChart;
+import org.knowm.xchart.CategoryChartBuilder;
+
         
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,8 +25,7 @@ import java.util.Map;
 
 import java.util.Scanner;
 import java.util.Set;
-import org.knowm.xchart.CategoryChart;
-import org.knowm.xchart.CategoryChartBuilder;
+
 
 /**
  *
